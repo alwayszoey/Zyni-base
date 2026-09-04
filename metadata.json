@@ -1,0 +1,6 @@
+{
+  "name": "Zyni Dev",
+  "description": "รับทำเว็บไซต์ครบวงจร พัฒนาระบบ รับงานเขียนบอท คุยตรงกับ Dev — Zyni Dev",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
