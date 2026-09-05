@@ -50,6 +50,12 @@ export default function IntroSplash({ onComplete }: IntroSplashProps) {
         }
         transition={{ duration: phase === 'exit' ? 0.9 : 0.85, ease: [0.22, 1, 0.36, 1] }}
       >
+        <img
+          src="/zyni-logo.png"
+          alt="Zyni"
+          className="intro-splash-emblem"
+          referrerPolicy="no-referrer"
+        />
         <span className="intro-splash-title">Zyni</span>
       </motion.div>
     </motion.div>

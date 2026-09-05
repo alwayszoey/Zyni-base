@@ -11,41 +11,6 @@ export interface NavbarProps {
 
 export default function Navbar({ activeSection, onNavigate, isReady }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [compact, setCompact] = useState(0);
-
-  useEffect(() => {
-    if (!isReady) return;
-
-    let rafId = 0;
-    let target = 0;
-    let current = 0;
-
-    const loop = () => {
-      current += (target - current) * 0.12;
-      if (Math.abs(target - current) < 0.001) {
-        current = target;
-      }
-      setCompact(current);
-      if (Math.abs(target - current) > 0.001) {
-        rafId = requestAnimationFrame(loop);
-      } else {
-        rafId = 0;
-      }
-    };
-
-    const handleScroll = () => {
-      target = Math.min(1, Math.max(0, window.scrollY / 120));
-      if (!rafId) {
-        rafId = requestAnimationFrame(loop);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, [isReady]);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -66,21 +31,22 @@ export default function Navbar({ activeSection, onNavigate, isReady }: NavbarPro
 
   return (
     <>
-      <header className="navbar" style={{ '--nav-compact': compact } as React.CSSProperties}>
+      <header className="navbar">
         <a
           href="/"
-          className="brand"
+          className="brand brand--logo-only"
           onClick={(e) => handleLinkClick(e, null)}
+          aria-label="Zyni"
         >
           <img
             src="/nav-logo.png"
             alt="Zyni"
             className="brand-logo"
+            referrerPolicy="no-referrer"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
             }}
           />
-          <span className="brand-text">Zyni</span>
         </a>
 
         <nav className="nav-links">

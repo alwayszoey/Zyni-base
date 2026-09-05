@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import AnnouncementModal from './components/AnnouncementModal';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import IntroSplash from './components/IntroSplash';
@@ -227,6 +228,7 @@ export default function App() {
             <PortfolioSection />
             <TeamSection />
             <Footer onNavigateTerms={handleNavigateTerms} />
+            {isReady && <AnnouncementModal onNavigateToContact={() => handleNavigate('team')} />}
           </>
         )}
       </div>
